@@ -1,0 +1,91 @@
+html, body {
+    margin: 0;
+}
+.top-area {
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+}
+
+.top-area .username {
+    position: absolute;
+    left: 5%;
+    top: 35%;
+}
+
+.top-area .profile-pic {
+    position: absolute;
+    right: 0%;
+    height: 50px; 
+    width: 50px;
+    border-radius: 50%;
+    border-color: black;
+    border: 2px;
+}
+
+.top-area .profile-pic .img {
+    position: absolute; 
+    height: 100px;
+}
+
+.button-container{
+    display: grid;
+        height: 750px;
+        width: 1500px;
+        grid-gap: 25px;
+}
+
+.record-button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    grid-column: 1;
+}
+
+.teams-button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    grid-column: 1;
+}
+
+.settings-button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    grid-column: 2;
+}
+
+.tests-button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    grid-column: 2;
+    grid-row: 1/2;
+}
