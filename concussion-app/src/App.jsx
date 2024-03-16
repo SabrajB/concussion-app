@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import Teams from "./components/dashboard/Teams"
 import Settings from "./components/dashboard/Settings"
-import Tests from "./components/dashboard/Tests"
+import Tests from "./components/dashboard/tests/Tests"
 import RecordData from "./components/dashboard/RecordData"
 
 function App() {
