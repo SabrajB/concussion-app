@@ -9,7 +9,7 @@ const TeamTable = () => {
   const navigate = useNavigate();
   const handleRowClick = (id) => {
     navigate(
-      `/teams/${id}`,
+      `${id}`,
       {
         state: {
           teamID: id

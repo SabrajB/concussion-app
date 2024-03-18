@@ -55,6 +55,17 @@ app.get('/players/:id', (req, res) => {
     })
 })
 
+app.get('playername/:pid', (req, res) => {
+    const id = req.params.pid
+
+    const sql = `SELECT Name FROM players WHERE PID = ?`;
+
+    db.query(sql, id, (err, data) => {
+        if(err) return res.json("Error retrieving players name")
+        return res.json(data);
+    })
+})
+
 app.post('/create', (req, res) => {
     const sql = "INSERT INTO teams (Name, Gender, Sport) VALUES (?)";
     const values = [

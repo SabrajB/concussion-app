@@ -12,8 +12,8 @@ const Dashboard = () => {
   const settingsPage = () => {
     navigateTo("/settings")
   }
-  const recordPage = () => {
-    navigateTo("/record")
+  const resultsPage = () => {
+    navigateTo("/view")
   }
   const testsPage = () => {
     navigateTo("/tests")
@@ -29,16 +29,16 @@ const Dashboard = () => {
         </div>
         <div className="button-container">
           <button className="record-button"
-            onClick={recordPage}>Record Data
+            onClick={resultsPage}>View Player Data
           </button>
           <button className="teams-button"
-            onClick={teamsPage}>My Teams
+            onClick={teamsPage}>Edit Teams
           </button>
           <button className="settings-button"
             onClick={settingsPage}>Settings
           </button>
           <button className="tests-button"
-            onClick={testsPage}>Tests
+            onClick={testsPage}>Run Tests
           </button>
         </div>
     </div>

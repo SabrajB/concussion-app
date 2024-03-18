@@ -10,7 +10,8 @@ import {
 import Teams from "./components/dashboard/Teams"
 import Settings from "./components/dashboard/Settings"
 import Tests from "./components/dashboard/tests/Tests"
-import RecordData from "./components/dashboard/RecordData"
+import Upload from "./components/dashboard/tests/UploadData"
+import MMSE from "./components/dashboard/tests/MMSE"
 
 function App() {
 
@@ -31,16 +32,21 @@ function App() {
           <Route
             path="/teams/*"
             element={<Teams/>}
-          /> 
-
-          <Route
-            path="/record"
-            element={<RecordData/>}
-          /> 
+          />  
 
           <Route
             path="/tests"
             element={<Tests/>}
+          /> 
+
+          <Route
+            path="/tests/:playerid/mmse"
+            element={<MMSE/>}
+          /> 
+
+          <Route
+            path="/tests/:playerid/upload"
+            element={<Upload/>}
           /> 
         </Routes>
       </Router>
