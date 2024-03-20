@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, CSSProperties } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import HashLoader from 'react-spinners/HashLoader';
 import axios from 'axios';
 import "./UploadData.css";
 
@@ -10,12 +11,32 @@ export const UploadData = () => {
     const [strideLength, setStrideLength] = useState(null);
     const [velocity, setVelocity] = useState(null);
     const [sway, setSway] = useState(null);
-    const [name, setName] = useState('');
+    const [gets, setGets] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     const { state } = useLocation();
+    const navigate = useNavigate();
     const player_id = state.pid;
 
     const mmse_score = state.mmse_result;
+
+
+    useEffect(() => {
+        console.log(gets);
+        if (gets === 3) {
+            // const currentDate = new Date();
+            // const options = { timeZone: 'America/New_York' }; // Eastern Standard Time (EST)
+            // const formattedDate = currentDate.toLocaleString('en-US', options);
+            // Perform axios.post request
+            axios.post(`http://localhost:8081/addresults`, {strideLength, velocity, sway, mmse_score, player_id})
+            .then(res => {
+            console.log(res);
+            navigate(`/viewdata/${player_id}`, { state: { playerID: player_id } });
+            setLoading(false);
+        })
+            .catch(err => console.log(err));
+        }
+    }, [gets]);
 
     const handleSideViewFileInput = (e) => {
         setSelectedSideViewFile(e.target.files[0]);
@@ -38,11 +59,11 @@ export const UploadData = () => {
         // Upload logic for front view video
         axios.post(`http://localhost:8081/upload/${filename}`)
             .then(() => {
+                setLoading(true);
                 setStep(3);
                 getStrideLength();
                 getSway();
                 getVelocity();
-                setStep(4);
             })
             .catch(error => console.error('Error uploading front view:', error));
     }
@@ -66,6 +87,7 @@ export const UploadData = () => {
         axios.get(`http://127.0.0.1:5000/user-id/process_video/sway?key=${filename}`)
             .then(response => {
                 setSway(response.data);
+                setGets(3);
             })
             .catch(error => console.error('Error fetching sway:', error))
     }
@@ -76,43 +98,39 @@ export const UploadData = () => {
 
         axios.get(`http://127.0.0.1:5000/user-id/process_video/velocity?key=${filename}`)
             .then(response => {
-                setVelocity(response.data);
+                setVelocity(response.data); 
             })
             .catch(error => console.error('Error fetching Velocity:', error))
     }
 
+     
+
     return (
         <div className="upload-module">
             {step === 1 && (
-                <>
+                <div className="upload-card">
                     <h1>Upload Side View Video</h1>
                     <label className="custom-file-upload">
                         <input type="file" onChange={handleSideViewFileInput} />
                     </label>
                     <button onClick={handleUploadSideView}>Upload Side View</button>
-                </>
+                </div>
             )}
             {step === 2 && (
-                <>
+                <div className="upload-card">
                     <h1>Upload Front View Video</h1>
                     <label className="custom-file-upload">
                         <input type="file" onChange={handleFrontViewFileInput} />
                     </label>
                     <button onClick={handleUploadFrontView}>Upload Front View</button>
-                </>
-            )}
-            {step === 3 && (
-                <p>Getting your gait results now</p>
-            )}
-            {step === 4 && (
-                <div className="player-results">
-                    <p>Player ID: {player_id}</p>
-                    <p>MMSE Score: {mmse_score}</p>
-                    <p>Stride Length: {strideLength}</p>
-                    <p>Sway: {sway}</p>
-                    <p>Velocity: {velocity}</p>
                 </div>
-            )}            
+            )}
+            {step === 3 && loading && (
+                <div className="spinner">
+                    <HashLoader color={"#6A0F49"} loading={loading} size={150}/>
+                    <h2> We are awaiting your results. You will be redirected soon.</h2>
+                </div>
+            )}         
         </div>
     );
 }

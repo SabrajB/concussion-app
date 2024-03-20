@@ -2,12 +2,28 @@
     text-align: center;
 }
 
+.upload-card {
+    margin: 0 auto;
+    padding: 20px 20px 20px 20px;
+  
+    /* Dimensions  */
+    width: 100%; /* Can be in percentage also. */
+    height: auto;  
+    /* Visual  */
+    background-color: #70BAFF;
+    border-radius: 16px;
+    color: black;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
 /* input[type="file"] {
     display: none;
 } */
 
 .custom-file-upload {
-    border: 1px solid #ccc;
+    border: 1px solid #2E0219;
+    border-radius: 16px;
     display: inline-block;
     padding: 12px 24px;
     cursor: pointer;
@@ -27,3 +43,40 @@
     font-size: 16px;
     color: #333;
   }
+
+  button {
+    background-color: #6a0f49;
+    border: none;
+    color: white;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    height: auto;
+  
+    border-radius: 24px;
+  }
+
+  button-hover {
+    background-color: #2E0219;
+  }
+
+.spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #70BAFF;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 50px;
+    border-radius: 30px;
+    color: black;
+}
+
+.spinner h2{
+  margin-top: 50px;
+}

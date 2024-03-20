@@ -1,0 +1,94 @@
+.Info-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 100vw; /* Set width to 100% */
+    height: 70vh;
+  }
+  
+  .player-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .player-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the player details horizontally */
+    align-items: center; /* Center the player details vertically */
+    height: 31px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .player-details { 
+    display: flex;
+    margin: 0 auto; /* Center horizontally */
+
+  }
+  
+  .player-details p {
+    margin: 0 5px;
+  }
+
+  .result-bubble {
+    background-color: #70Baff;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 10px;
+    width: 60vw;
+    margin-top: 20px;
+  }
+
+  .baseline-result-bubble {
+    background-color: #0D73D1;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 60vw;
+    margin-top: 20px;
+  }
+  
+  .baseline-details {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .result-details {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+
+  .fixed-section {
+    position: sticky;
+    top: 150px;
+    background-color: #ffffff; /* Adjust as needed */
+    z-index: 1; /* Ensure it stays on top of other content */
+  }
+
+  .detail-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    text-align: center;
+    padding-right: 6%;
+    padding-left: 6%;
+  }
+  
+  .result-title {
+    font-weight: bold;
+  }
+  
+  .result-value {
+    margin: 0;
+    font-style: italic;
+  }
+
+  

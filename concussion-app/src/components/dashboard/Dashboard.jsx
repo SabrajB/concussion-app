@@ -13,24 +13,14 @@ const Dashboard = () => {
     navigateTo("/settings")
   }
   const resultsPage = () => {
-    navigateTo("/view")
+    navigateTo("/viewdata")
   }
   const testsPage = () => {
     navigateTo("/tests")
   }
   return (
     <div>
-        <div className="top-area">
-            <div className="username">
-                <h2>Welcome, User 1032</h2>
-            </div>
-            <div className="profile-pic">
-            </div>
-        </div>
         <div className="button-container">
-          <button className="record-button"
-            onClick={resultsPage}>View Player Data
-          </button>
           <button className="teams-button"
             onClick={teamsPage}>Edit Teams
           </button>

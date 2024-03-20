@@ -1,0 +1,58 @@
+.team-view-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50vw;
+    height: 75vh;
+}
+
+.team-details {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    font-size: 20px;
+}
+
+.add-player-button {
+    margin-bottom: 20px;
+    width: 20%;
+    background-color: #6a0f49;
+}
+
+.player-bubble {
+    width: 100%;
+    background-color: #70baff;
+    border: 1px solid #cccccc;
+    border-radius: 20px; /* Increase border radius for a more rounded look */
+    padding: 10px;
+    margin-bottom: 20px;
+    display:flex;
+    flex-direction: row;
+}
+
+.players-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center-align player bubbles */
+    width: 100%;
+}
+
+
+.player-name1 {
+    text-align: left;
+    font-weight: bold;
+    padding-left: 20px;
+    font-size: 18px;
+}
+
+.player-details1 {
+    position: absolute;
+    right: 30%;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+p {
+    margin-right: 5px;
+}
+

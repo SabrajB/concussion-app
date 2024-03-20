@@ -1,0 +1,63 @@
+/* Header.css */
+
+.header {
+  background-color: #70BAFF;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 11vh;
+  position: fixed; /* Change position to fixed */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+  
+  .h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 75px;
+  }
+  
+  .header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  .header nav ul li a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .home-button {
+    position: absolute;
+    left: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-left: 30px;
+    width: 100px;
+    height: auto;
+  }
+
+  .home-icon {
+      width: 75px;
+      height: 75px;
+      margin-right: 10px; /* Add spacing between icon and text */
+  }
+
+  .logo-icon {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 10px;
+
+}

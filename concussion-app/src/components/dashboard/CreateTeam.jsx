@@ -1,49 +1,67 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import './CreateTeam.css'; // Import your custom CSS file
 
 const CreateTeam = () => {  
-    const [name, SetName] = useState('')
-    const [gender, SetGender] = useState('')
-    const [sport, SetSport] = useState('')
+    const [name, setName] = useState('');
+    const [gender, setGender] = useState('');
+    const [sport, setSport] = useState('');
     const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
-        axios.post('http://localhost:8081/create', {name, gender, sport})
-        .then(res => {
-            console.log(res);
-            navigate('/teams')
-        }).catch(err => console.log(err));
+        axios.post('http://localhost:8081/create', { name, gender, sport })
+            .then(res => {
+                console.log(res);
+                navigate('/teams');
+            })
+            .catch(err => console.log(err));
     }
-  return (
-    <div className='d-flex vw-100 vh-100 bg-primary justify-content-center align-items-center'>
-        <div className='w-75 bg-white rounded p-3'>
-            <form onSubmit={handleSubmit}>
-                <h2>Add Team</h2>
-                <div className='mb-2'>
-                    <label htmlFor="">Name</label>
-                    <input type="text" placeholder='Enter Name' className='form-control'
-                    onChange={e => SetName(e.target.value)}
+
+    return (
+        <div className='form-container'>
+            <form className="my-form" onSubmit={handleSubmit}>
+                <div className="add-team-title"> 
+                    <h2>Add Team</h2> 
+                </div>
+                <div className='form-group'>
+                    <label htmlFor='name'>Name</label>
+                    <input 
+                        type='text' 
+                        id='name' 
+                        placeholder='Enter Name' 
+                        className='form-control'
+                        value={name}
+                        onChange={e => setName(e.target.value)}
                     />
                 </div>
-                <div className='mb-2'>
-                    <label htmlFor="">Gender</label>
-                    <input type="text" placeholder='Enter Gender' className='form-control'
-                    onChange={e => SetGender(e.target.value)}
+                <div className='form-group'>
+                    <label htmlFor='gender'>Gender</label>
+                    <input 
+                        type='text' 
+                        id='gender' 
+                        placeholder='Enter Gender' 
+                        className='form-control'
+                        value={gender}
+                        onChange={e => setGender(e.target.value)}
                     />
                 </div>
-                <div className='mb-2'>
-                    <label htmlFor="">Sport</label>
-                    <input type="text" placeholder='Enter Sport' className='form-control'
-                    onChange={e => SetSport(e.target.value)}
+                <div className='form-group'>
+                    <label htmlFor='sport'>Sport</label>
+                    <input 
+                        type='text' 
+                        id='sport' 
+                        placeholder='Enter Sport' 
+                        className='form-control'
+                        value={sport}
+                        onChange={e => setSport(e.target.value)}
                     />
                 </div>
-                <button className='btn btn-success'>Submit</button>
+                <button className='submit-button'>Submit</button>
             </form>
         </div>
-    </div>
-  )
-}
+    );
+};
 
 export default CreateTeam;

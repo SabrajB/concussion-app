@@ -12,12 +12,15 @@ import Settings from "./components/dashboard/Settings"
 import Tests from "./components/dashboard/tests/Tests"
 import Upload from "./components/dashboard/tests/UploadData"
 import MMSE from "./components/dashboard/tests/MMSE"
+import Header from "./components/Header"
+import ViewData from "./components/dashboard/ViewData"
 
 function App() {
 
   return (
     <>
       <Router>
+      <Header></Header>
         <Routes>
           <Route
             path="/"
@@ -38,6 +41,11 @@ function App() {
             path="/tests"
             element={<Tests/>}
           /> 
+
+          <Route
+            path="/viewdata/*"
+            element={<ViewData/>}
+          />
 
           <Route
             path="/tests/:playerid/mmse"
