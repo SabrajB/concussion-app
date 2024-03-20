@@ -176,7 +176,7 @@ def get_stride_length():
 
             f_lank_y = filtfilt(b, a, left_ankle_velocity_y_aruco)
         else:
-            f_lank_y = right_ankle_velocity_y_aruco
+            f_lank_y = left_ankle_velocity_y_aruco
 
         r_points = []
         for i in range(1, len(f_rank_y)):
@@ -290,10 +290,13 @@ def get_mean_velocity():
         nyquist_freq = 0.5 * sampling_freq
         norm_cuttoff_freq = cutoff_freq / nyquist_freq
 
-        order = 2
-        b, a = butter(order, norm_cuttoff_freq, btype='low', analog=False)
+        if len(right_ankle_velocity_aruco) > 9: 
+            order = 2
+            b, a = butter(order, norm_cuttoff_freq, btype='low', analog=False)
 
-        f_rank_vel = filtfilt(b, a, right_ankle_velocity_aruco)
+            f_rank_vel = filtfilt(b, a, right_ankle_velocity_aruco)
+        else: 
+            f_rank_vel = right_ankle_velocity_aruco
 
         velocity = str(np.nanmean(f_rank_vel))
 
