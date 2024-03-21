@@ -76,6 +76,7 @@ export const UploadData = () => {
         axios.get(`http://127.0.0.1:5000/user-id/process_video/stride?key=${filename}`)
             .then(response => {
                 setStrideLength(response.data);
+                setGets(prevCount => prevCount + 1);
             })
             .catch(error => console.error('Error fetching stride length:', error))
     }
@@ -87,7 +88,7 @@ export const UploadData = () => {
         axios.get(`http://127.0.0.1:5000/user-id/process_video/sway?key=${filename}`)
             .then(response => {
                 setSway(response.data);
-                setGets(3);
+                setGets(prevCount => prevCount + 1);
             })
             .catch(error => console.error('Error fetching sway:', error))
     }
@@ -98,7 +99,8 @@ export const UploadData = () => {
 
         axios.get(`http://127.0.0.1:5000/user-id/process_video/velocity?key=${filename}`)
             .then(response => {
-                setVelocity(response.data); 
+                setVelocity(response.data);
+                setGets(prevCount => prevCount + 1); 
             })
             .catch(error => console.error('Error fetching Velocity:', error))
     }

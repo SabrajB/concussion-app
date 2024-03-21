@@ -85,13 +85,13 @@ def set_up_aruco_scale(vid_path, start_frame, end_frame):
         if len(scale_factor_tracker) > 0:
             scale_factor = np.nanmean(scale_factor_tracker)
         else:
-            scale_factor = 2.0
+            scale_factor = 1.86
 
     return scale_factor
 
-# @app.route("/")
-# def hello():
-#     return "Hello world .."
+@app.route("/")
+def hello():
+    return "Hello world .."
 
 @app.route("/user-id/process_video/stride", methods=['GET'])
 def get_stride_length():
@@ -126,13 +126,7 @@ def get_stride_length():
                 if frame is not None:
                     frame_count += 1
                     image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                    image.flags.writeable = False
-
                     results = pose.process(image)
-
-                    image.flags.writeable = True
-                    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-
                     if results.pose_landmarks is not None:
                         landmarks = results.pose_landmarks.landmark
                         if landmarks and scale_factor_aruco is not None:
@@ -178,11 +172,12 @@ def get_stride_length():
         else:
             f_lank_y = left_ankle_velocity_y_aruco
 
+        threshold = -0.025
         r_points = []
         for i in range(1, len(f_rank_y)):
-            if f_rank_y[i-1] < 0 and f_rank_y[i] >= 0:
+            if f_rank_y[i-1] < threshold and f_rank_y[i] >= threshold:
                 r_points.append(i)
-            elif f_rank_y[i-1] >= 0 and f_rank_y[i] < 0:
+            elif f_rank_y[i-1] >= threshold and f_rank_y[i] < threshold:
                 r_points.append(i)
         
         l_points = []
@@ -290,12 +285,12 @@ def get_mean_velocity():
         nyquist_freq = 0.5 * sampling_freq
         norm_cuttoff_freq = cutoff_freq / nyquist_freq
 
-        if len(right_ankle_velocity_aruco) > 9: 
+        if len(right_ankle_velocity_aruco) > 9:
             order = 2
             b, a = butter(order, norm_cuttoff_freq, btype='low', analog=False)
 
             f_rank_vel = filtfilt(b, a, right_ankle_velocity_aruco)
-        else: 
+        else:
             f_rank_vel = right_ankle_velocity_aruco
 
         velocity = str(np.nanmean(f_rank_vel))
